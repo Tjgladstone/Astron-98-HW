@@ -1,0 +1,130 @@
+#Power of a Number
+def exp(x, y):
+    result = 1
+    if y < 0:
+        x = 1 / x
+        y = -y
+    for _ in range(y):
+        result *= x
+    return result
+x = 3
+y = -1
+print(exp(x, y))
+
+
+# Min Max function
+def find_min_max(numbers):
+    if not numbers:  
+        return None, None
+    min_value = min(numbers)
+    max_value = max(numbers)
+    return min_value, max_value
+
+numbers = [1, 5, 4, -1]
+min_max_tuple = find_min_max(numbers)
+print("Minimum and Maximum:", min_max_tuple)
+
+#Check Leap year
+def leap_year(year):
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                return True
+            else:
+                return False
+        else:
+            return True
+    else:
+        return False
+
+year = 1900
+print(leap_year(year))
+
+#Calculate BMI
+def bmi(weight_kg, height_m):
+    bmi = weight_kg / (height_m ** 2)
+    return bmi
+weight = 24
+height = 1
+bmi = bmi(weight, height)
+print("BMI:", bmi)
+
+#Rotating Digits
+def rotate_digits(n):
+    last_digit = n % 10
+    remaining_digits = n // 10
+    num_digits = 1
+    temp = remaining_digits
+    while temp > 0:
+        num_digits += 1
+        temp //= 10
+    rotated_number = last_digit * (10 ** (num_digits - 1)) + remaining_digits
+    return rotated_number
+
+input_number = 12345
+rotated_number = rotate_digits(input_number)
+print("Original:", input_number)
+print("Rotated:", rotated_number)
+
+#Min and Max without loops
+# Functions to find minimum value using for loop and while loop
+def find_min_for_loop(numbers):
+    min_value = numbers[0]
+    for num in numbers:
+        if num < min_value:
+            min_value = num
+    return min_value
+
+def find_min_while_loop(numbers):
+    min_value = numbers[0]
+    i = 1
+    while i < len(numbers):
+        if numbers[i] < min_value:
+            min_value = numbers[i]
+        i += 1
+    return min_value
+
+# Functions to find maximum value using for loop and while loop
+def find_max_for_loop(numbers):
+    max_value = numbers[0]
+    for num in numbers:
+        if num > max_value:
+            max_value = num
+    return max_value
+def find_max_while_loop(numbers):
+    max_value = numbers[0]
+    i = 1
+    while i < len(numbers):
+        if numbers[i] > max_value:
+            max_value = numbers[i]
+        i += 1
+    return max_value
+numbers = [5, 3, 9, 2, 7, 1]
+print("Minimum (for loop):", find_min_for_loop(numbers))
+print("Minimum (while loop):", find_min_while_loop(numbers))
+print("Maximum (for loop):", find_max_for_loop(numbers))
+print("Maximum (while loop):", find_max_while_loop(numbers))
+
+#Vowels
+def vowel_count(input_string):
+    vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+    count = 0
+    for char in input_string:
+        if char in vowels:
+            count += 1
+    return count
+input_str = "UC Berkeley"
+print("Number of vowels:", vowel_count(input_str))
+
+#Digital Root
+def digital_root(n):
+    sum_of_digits = 0
+    while n > 0:
+        sum_of_digits += n % 10
+        n //= 10
+    return sum_of_digits
+input_number = 12345
+print("Digital root:", digital_root(input_number))
+
+
+
