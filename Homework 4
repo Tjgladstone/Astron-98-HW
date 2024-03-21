@@ -1,0 +1,65 @@
+#2.1 
+numbers_0_through_50 = list(range(51))
+print (numbers_0_through_50)
+
+#2.2
+def square(lis):
+    return [x ** 2 for x in lis]
+
+lis = [2, 3, 4]
+print(square(lis))
+
+#2.3
+listA = list(range(1, 11))
+listB = list(range(20, 31))
+oddlistA = listA[::2]
+oddlistB = [num for num in listB if num % 2 != 0]
+oddlist = oddlistA + oddlistB
+print (oddlist)
+
+# error for 2.3, the list that printed used the odd terms of only the firt list, I needed to take the odd terms of each list first and then add them.
+# I had to use another method because the second list started with an even number
+
+#3.1
+matrix = []
+count = 1
+for i in range(5):
+    row = []
+    for j in range(5):
+        row.append(count)
+        count += 1
+    matrix.append(row)
+for row in matrix:
+    print(row)
+
+#3.2
+matrix = []
+count = 1
+for i in range(5):
+    row = []
+    for j in range(5):
+        if count % 3 == 0:
+            row.append('?')
+        else:
+            row.append(count)
+        count += 1
+    matrix.append(row)
+for row in matrix:
+    print(row)
+
+#4
+def removeDuplicates(lis):
+    new_list = []
+    for item in lis:
+        if item not in new_list:
+            new_list.append(item)
+    return new_list
+
+lis = [1, 1, 2, 3, 4, 4]
+print(removeDuplicates(lis))
+
+
+
+
+    
+
