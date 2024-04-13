@@ -1,0 +1,61 @@
+#Random Plots
+import matplotlib.pyplot as plt
+import numpy as np
+np.random.seed(0) 
+data1 = np.random.randint(0, 101, size=40)
+data2 = np.random.randint(0, 101, size=40)
+data3 = np.random.randint(0, 101, size=40)
+fig, axs = plt.subplots(2, 1)
+axs[0].plot(range(len(data1)), data1, color='orange', linewidth=10, label='Data 1')
+axs[0].plot(range(len(data2)), data2, color='red', linestyle='--', label='Data 2')
+axs[0].set_title('Line Plots')
+axs[0].legend()
+axs[1].scatter(range(len(data3)), data3, color='magenta', marker='D', label='Data 3')
+axs[1].set_title('Scatter Plot')
+axs[1].legend()
+plt.tight_layout()
+plt.show()
+
+# van der Waals Gas
+import numpy as np
+import matplotlib.pyplot as plt
+R = 0.083144
+a = 16.02
+b = 0.1124
+pressure = np.linspace(1, 10, 100)
+volume = np.linspace(10, 30, 100)
+P, V = np.meshgrid(pressure, volume)
+T = (P + a / (V**2)) * (V - b) / (R)
+plt.figure(figsize=(8, 6))
+plt.pcolormesh(P, V, T, cmap='plasma', vmin=T.min(), vmax=T.max())
+plt.colorbar(label='Temperature (K)')
+plt.xlabel('Pressure (bar)')
+plt.ylabel('Volume (L)')
+plt.title('Temperature of Acetone (1 mole)')
+plt.show()
+
+# Monte Carlo pi
+import numpy as np
+import matplotlib.pyplot as plt
+def estimate_pi(N):
+    points = np.random.rand(N, 2)
+    distances = np.linalg.norm(points, axis=1)
+    inside_circle = np.sum(distances <= 1)
+    pi_estimate = 4 * inside_circle / N
+    return pi_estimate
+N_values = [int(1e3), int(1e4), int(1e5), int(1e6)]
+for N in N_values:
+    pi_estimate = estimate_pi(N)
+    print(f"N = {N}: π ≈ {pi_estimate}")
+N = int(1e4)
+points = np.random.rand(N, 2)
+distances = np.linalg.norm(points, axis=1)
+inside_circle = distances <= 1
+plt.figure(figsize=(6, 6))
+plt.scatter(points[inside_circle, 0], points[inside_circle, 1], color='blue')
+plt.scatter(points[~inside_circle, 0], points[~inside_circle, 1], color='red')
+plt.gca().set_aspect('equal', adjustable='box')
+plt.title('Monte Carlo Estimation of π')
+plt.text(0.1, 0.9, f'π ≈ {estimate_pi(N)}', transform=plt.gca().transAxes, fontsize=12)
+plt.legend()
+plt.show()
